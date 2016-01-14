@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="pricipal">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Estudos Angular</title>
+        <link rel="stylesheet" href="ng-css/bootstrap.min.css">
+        <link rel="stylesheet" href="ng-css/bootstrap-theme.min.css">
+        <script src="ng-js/lib/angular.min.js"></script>
+        <script src="ng-js/main.js"></script>
+        <script src="ng-js/directives/minhas-directivas.js"></script>
+        <script src="ng-js/controllers/fotos-controller.js"></script>
+    </head>
+
+    <body ng-controller="FotosController">
+        <div class="container">
+            <painel ng-repeat="foto in fotos" titulo="{{foto.titulo}}">
+                <img src="{{foto.url}}" alt="{{foto.titulo}}" class="img-responsive center-block">
+            </painel>
+
+        </div> <!-- fim container -->
+    </body>
+</html>

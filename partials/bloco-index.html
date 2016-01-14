@@ -1,0 +1,62 @@
+<div class="panel-heading ui-draggable-handle">
+    <div class="col-md-11">
+        <h3 class="panel-title">Gerência de Blocos</h3>
+    </div>
+    <div class="col-md-1 right">
+        <a href="#/pontos/form" class="btn btn-primary">NOVO</a>
+    </div>
+</div>
+
+<p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>NOME</th>
+        <th>RELEASE</th>
+        <th>BLOCO?</th>
+        <th>ORDEM</th>
+        <th>AÇÕES</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="bloco in blocos">
+        <th scope="row">{{bloco.id}}</th>
+        <td>{{bloco.desricao}}</td>
+        <td>{{bloco.descricao_curta}}</td>
+        <td><span class="label label-{{bloco.eh_bloco === 'S'?'success':'danger'}}">{{bloco.eh_bloco === 'S'?'SIM':'NÃO'}}</span>
+        </td>
+        <td>{{bloco.ordem}}</td>
+        <td colspan="2">
+            <a href="#/pontos/edit/{{bloco.id}}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+            <button ng-click="remover(bloco)" class="btn btn-danger"><i class="fa fa-times"></i></button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="col-md-10">
+    <nav>
+        <ul class="pagination">
+            <li>
+                <span>Página <strong>{{page}}</strong> de um total de <strong>{{page_count}}</strong></span>
+            </li>
+
+            <li>
+                <a href="" ng-click="apiLoad(page_first)" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+
+            <li ng-repeat="page in pages">
+                <a href="" ng-click="apiLoad(page.page_url)">{{page.page}}</a>
+            </li>
+
+            <li>
+                <a href="" ng-click="apiLoad(page_last)" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
